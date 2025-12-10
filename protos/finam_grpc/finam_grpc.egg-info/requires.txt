@@ -1,0 +1,7 @@
+grpcio==1.72.0
+grpcio-tools>=1.62.3
+grpcio-status>=1.62.3
+grpcio-reflection>=1.62.3
+grpcio-health-checking>=1.62.3
+loguru
+ipykernel>=7.1.0
