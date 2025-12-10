@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="finam_proto",
+    name="finam_grpc",
     version="0.1.0",
     packages=find_packages(),
     include_package_data=True,

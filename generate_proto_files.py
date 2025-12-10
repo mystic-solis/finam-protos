@@ -10,7 +10,7 @@ import shutil
 
 
 SRC_DIR = Path("./protos")  # папка с proto
-DST_DIR = Path(__file__).parent / "finam_grpc"  # куда генерировать
+DST_DIR = Path(__file__).parent / "."  # куда генерировать
 DST_DIR.mkdir(exist_ok=True)
 
 # Путь к встроенным Google proto (timestamp.proto и др.)
