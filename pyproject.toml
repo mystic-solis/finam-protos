@@ -1,18 +1,18 @@
 [project]
-name = "finam-grpc"
-version = "1.0.0"
+name = "finam-protos"
+version = "1.0.1"
 description = "Finam gRPC API protos"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "grpcio==1.72.0",
     # для билда
-    # "grpcio-tools>=1.62.3",
-    # "grpcio-status>=1.62.3",
-    # "grpcio-reflection>=1.62.3",
-    # "grpcio-health-checking>=1.62.3",
-    # "loguru",
-    # "ipykernel>=7.1.0",
+    "grpcio-tools>=1.62.3",
+    "grpcio-status>=1.62.3",
+    "grpcio-reflection>=1.62.3",
+    "grpcio-health-checking>=1.62.3",
+    "loguru",
+    "ipykernel>=7.1.0",
 ]
 
 [build-system]
@@ -20,13 +20,8 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-where = ["finam_grpc"]
+# where = ["finam_protos"]
+include = ["finam_protos*"]
 
-
-# [build-system]
-# requires = ["setuptools>=61.0"]
-# build-backend = "setuptools.build_meta"
-
-# [tool.setuptools.packages.find]
-# where = ["grpc"]
-# include = ["tradeapi*"]
+[tool.uv]
+package = true

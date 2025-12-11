@@ -1,2 +1,4 @@
 /.venv
 /finam.egg-info
+*.egg-info
+dist
