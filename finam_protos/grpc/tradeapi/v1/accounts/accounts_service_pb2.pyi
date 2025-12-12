@@ -1,3 +1,5 @@
+import datetime
+
 from google.api import annotations_pb2 as _annotations_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from google.type import decimal_pb2 as _decimal_pb2
@@ -9,7 +11,8 @@ from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
@@ -20,7 +23,7 @@ class GetAccountRequest(_message.Message):
     def __init__(self, account_id: _Optional[str] = ...) -> None: ...
 
 class GetAccountResponse(_message.Message):
-    __slots__ = ("account_id", "type", "status", "equity", "unrealized_profit", "positions", "cash", "portfolio_mc", "portfolio_mct", "portfolio_forts")
+    __slots__ = ("account_id", "type", "status", "equity", "unrealized_profit", "positions", "cash", "portfolio_mc", "portfolio_mct", "portfolio_forts", "open_account_date", "first_trade_date", "first_non_trade_date")
     ACCOUNT_ID_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
     STATUS_FIELD_NUMBER: _ClassVar[int]
@@ -31,6 +34,9 @@ class GetAccountResponse(_message.Message):
     PORTFOLIO_MC_FIELD_NUMBER: _ClassVar[int]
     PORTFOLIO_MCT_FIELD_NUMBER: _ClassVar[int]
     PORTFOLIO_FORTS_FIELD_NUMBER: _ClassVar[int]
+    OPEN_ACCOUNT_DATE_FIELD_NUMBER: _ClassVar[int]
+    FIRST_TRADE_DATE_FIELD_NUMBER: _ClassVar[int]
+    FIRST_NON_TRADE_DATE_FIELD_NUMBER: _ClassVar[int]
     account_id: str
     type: str
     status: str
@@ -41,7 +47,10 @@ class GetAccountResponse(_message.Message):
     portfolio_mc: MC
     portfolio_mct: MCT
     portfolio_forts: FORTS
-    def __init__(self, account_id: _Optional[str] = ..., type: _Optional[str] = ..., status: _Optional[str] = ..., equity: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., unrealized_profit: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., positions: _Optional[_Iterable[_Union[Position, _Mapping]]] = ..., cash: _Optional[_Iterable[_Union[_money_pb2.Money, _Mapping]]] = ..., portfolio_mc: _Optional[_Union[MC, _Mapping]] = ..., portfolio_mct: _Optional[_Union[MCT, _Mapping]] = ..., portfolio_forts: _Optional[_Union[FORTS, _Mapping]] = ...) -> None: ...
+    open_account_date: _timestamp_pb2.Timestamp
+    first_trade_date: _timestamp_pb2.Timestamp
+    first_non_trade_date: _timestamp_pb2.Timestamp
+    def __init__(self, account_id: _Optional[str] = ..., type: _Optional[str] = ..., status: _Optional[str] = ..., equity: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., unrealized_profit: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., positions: _Optional[_Iterable[_Union[Position, _Mapping]]] = ..., cash: _Optional[_Iterable[_Union[_money_pb2.Money, _Mapping]]] = ..., portfolio_mc: _Optional[_Union[MC, _Mapping]] = ..., portfolio_mct: _Optional[_Union[MCT, _Mapping]] = ..., portfolio_forts: _Optional[_Union[FORTS, _Mapping]] = ..., open_account_date: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., first_trade_date: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., first_non_trade_date: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class MC(_message.Message):
     __slots__ = ("available_cash", "initial_margin", "maintenance_margin")
@@ -116,7 +125,7 @@ class Position(_message.Message):
     def __init__(self, symbol: _Optional[str] = ..., quantity: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., average_price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., current_price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., maintenance_margin: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., daily_pnl: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., unrealized_pnl: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ...) -> None: ...
 
 class Transaction(_message.Message):
-    __slots__ = ("id", "category", "timestamp", "symbol", "change", "trade", "transaction_category", "transaction_name")
+    __slots__ = ("id", "category", "timestamp", "symbol", "change", "trade", "transaction_category", "transaction_name", "change_qty")
     class TransactionCategory(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
         OTHERS: _ClassVar[Transaction.TransactionCategory]
@@ -160,6 +169,7 @@ class Transaction(_message.Message):
     TRADE_FIELD_NUMBER: _ClassVar[int]
     TRANSACTION_CATEGORY_FIELD_NUMBER: _ClassVar[int]
     TRANSACTION_NAME_FIELD_NUMBER: _ClassVar[int]
+    CHANGE_QTY_FIELD_NUMBER: _ClassVar[int]
     id: str
     category: str
     timestamp: _timestamp_pb2.Timestamp
@@ -168,4 +178,5 @@ class Transaction(_message.Message):
     trade: Transaction.Trade
     transaction_category: Transaction.TransactionCategory
     transaction_name: str
-    def __init__(self, id: _Optional[str] = ..., category: _Optional[str] = ..., timestamp: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ..., symbol: _Optional[str] = ..., change: _Optional[_Union[_money_pb2.Money, _Mapping]] = ..., trade: _Optional[_Union[Transaction.Trade, _Mapping]] = ..., transaction_category: _Optional[_Union[Transaction.TransactionCategory, str]] = ..., transaction_name: _Optional[str] = ...) -> None: ...
+    change_qty: _decimal_pb2.Decimal
+    def __init__(self, id: _Optional[str] = ..., category: _Optional[str] = ..., timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., symbol: _Optional[str] = ..., change: _Optional[_Union[_money_pb2.Money, _Mapping]] = ..., trade: _Optional[_Union[Transaction.Trade, _Mapping]] = ..., transaction_category: _Optional[_Union[Transaction.TransactionCategory, str]] = ..., transaction_name: _Optional[str] = ..., change_qty: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ...) -> None: ...

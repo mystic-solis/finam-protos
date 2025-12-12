@@ -1,3 +1,5 @@
+import datetime
+
 from google.api import annotations_pb2 as _annotations_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from google.type import decimal_pb2 as _decimal_pb2
@@ -7,7 +9,8 @@ from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
@@ -160,6 +163,30 @@ class OrderTradeResponse(_message.Message):
     trades: _containers.RepeatedCompositeFieldContainer[_trade_pb2.AccountTrade]
     def __init__(self, orders: _Optional[_Iterable[_Union[OrderState, _Mapping]]] = ..., trades: _Optional[_Iterable[_Union[_trade_pb2.AccountTrade, _Mapping]]] = ...) -> None: ...
 
+class SubscribeOrdersRequest(_message.Message):
+    __slots__ = ("account_id",)
+    ACCOUNT_ID_FIELD_NUMBER: _ClassVar[int]
+    account_id: str
+    def __init__(self, account_id: _Optional[str] = ...) -> None: ...
+
+class SubscribeOrdersResponse(_message.Message):
+    __slots__ = ("orders",)
+    ORDERS_FIELD_NUMBER: _ClassVar[int]
+    orders: _containers.RepeatedCompositeFieldContainer[OrderState]
+    def __init__(self, orders: _Optional[_Iterable[_Union[OrderState, _Mapping]]] = ...) -> None: ...
+
+class SubscribeTradesRequest(_message.Message):
+    __slots__ = ("account_id",)
+    ACCOUNT_ID_FIELD_NUMBER: _ClassVar[int]
+    account_id: str
+    def __init__(self, account_id: _Optional[str] = ...) -> None: ...
+
+class SubscribeTradesResponse(_message.Message):
+    __slots__ = ("trades",)
+    TRADES_FIELD_NUMBER: _ClassVar[int]
+    trades: _containers.RepeatedCompositeFieldContainer[_trade_pb2.AccountTrade]
+    def __init__(self, trades: _Optional[_Iterable[_Union[_trade_pb2.AccountTrade, _Mapping]]] = ...) -> None: ...
+
 class GetOrderRequest(_message.Message):
     __slots__ = ("account_id", "order_id")
     ACCOUNT_ID_FIELD_NUMBER: _ClassVar[int]
@@ -169,7 +196,7 @@ class GetOrderRequest(_message.Message):
     def __init__(self, account_id: _Optional[str] = ..., order_id: _Optional[str] = ...) -> None: ...
 
 class Order(_message.Message):
-    __slots__ = ("account_id", "symbol", "quantity", "side", "type", "time_in_force", "limit_price", "stop_price", "stop_condition", "legs", "client_order_id", "valid_before")
+    __slots__ = ("account_id", "symbol", "quantity", "side", "type", "time_in_force", "limit_price", "stop_price", "stop_condition", "legs", "client_order_id", "valid_before", "comment")
     ACCOUNT_ID_FIELD_NUMBER: _ClassVar[int]
     SYMBOL_FIELD_NUMBER: _ClassVar[int]
     QUANTITY_FIELD_NUMBER: _ClassVar[int]
@@ -182,6 +209,7 @@ class Order(_message.Message):
     LEGS_FIELD_NUMBER: _ClassVar[int]
     CLIENT_ORDER_ID_FIELD_NUMBER: _ClassVar[int]
     VALID_BEFORE_FIELD_NUMBER: _ClassVar[int]
+    COMMENT_FIELD_NUMBER: _ClassVar[int]
     account_id: str
     symbol: str
     quantity: _decimal_pb2.Decimal
@@ -194,7 +222,8 @@ class Order(_message.Message):
     legs: _containers.RepeatedCompositeFieldContainer[Leg]
     client_order_id: str
     valid_before: ValidBefore
-    def __init__(self, account_id: _Optional[str] = ..., symbol: _Optional[str] = ..., quantity: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., side: _Optional[_Union[_side_pb2.Side, str]] = ..., type: _Optional[_Union[OrderType, str]] = ..., time_in_force: _Optional[_Union[TimeInForce, str]] = ..., limit_price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., stop_price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., stop_condition: _Optional[_Union[StopCondition, str]] = ..., legs: _Optional[_Iterable[_Union[Leg, _Mapping]]] = ..., client_order_id: _Optional[str] = ..., valid_before: _Optional[_Union[ValidBefore, str]] = ...) -> None: ...
+    comment: str
+    def __init__(self, account_id: _Optional[str] = ..., symbol: _Optional[str] = ..., quantity: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., side: _Optional[_Union[_side_pb2.Side, str]] = ..., type: _Optional[_Union[OrderType, str]] = ..., time_in_force: _Optional[_Union[TimeInForce, str]] = ..., limit_price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., stop_price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., stop_condition: _Optional[_Union[StopCondition, str]] = ..., legs: _Optional[_Iterable[_Union[Leg, _Mapping]]] = ..., client_order_id: _Optional[str] = ..., valid_before: _Optional[_Union[ValidBefore, str]] = ..., comment: _Optional[str] = ...) -> None: ...
 
 class Leg(_message.Message):
     __slots__ = ("symbol", "quantity", "side")
@@ -222,7 +251,7 @@ class OrderState(_message.Message):
     transact_at: _timestamp_pb2.Timestamp
     accept_at: _timestamp_pb2.Timestamp
     withdraw_at: _timestamp_pb2.Timestamp
-    def __init__(self, order_id: _Optional[str] = ..., exec_id: _Optional[str] = ..., status: _Optional[_Union[OrderStatus, str]] = ..., order: _Optional[_Union[Order, _Mapping]] = ..., transact_at: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ..., accept_at: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ..., withdraw_at: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    def __init__(self, order_id: _Optional[str] = ..., exec_id: _Optional[str] = ..., status: _Optional[_Union[OrderStatus, str]] = ..., order: _Optional[_Union[Order, _Mapping]] = ..., transact_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., accept_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., withdraw_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class OrdersRequest(_message.Message):
     __slots__ = ("account_id",)

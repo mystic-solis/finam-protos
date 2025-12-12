@@ -1,14 +1,18 @@
+import datetime
+
 from google.api import annotations_pb2 as _annotations_pb2
 from google.type import date_pb2 as _date_pb2
 from google.type import decimal_pb2 as _decimal_pb2
 from google.type import interval_pb2 as _interval_pb2
 from google.type import money_pb2 as _money_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
+from google.protobuf import wrappers_pb2 as _wrappers_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
@@ -41,7 +45,7 @@ class GetAssetRequest(_message.Message):
     def __init__(self, symbol: _Optional[str] = ..., account_id: _Optional[str] = ...) -> None: ...
 
 class GetAssetResponse(_message.Message):
-    __slots__ = ("board", "id", "ticker", "mic", "isin", "type", "name", "decimals", "min_step", "lot_size", "expiration_date")
+    __slots__ = ("board", "id", "ticker", "mic", "isin", "type", "name", "decimals", "min_step", "lot_size", "expiration_date", "quote_currency")
     BOARD_FIELD_NUMBER: _ClassVar[int]
     ID_FIELD_NUMBER: _ClassVar[int]
     TICKER_FIELD_NUMBER: _ClassVar[int]
@@ -53,6 +57,7 @@ class GetAssetResponse(_message.Message):
     MIN_STEP_FIELD_NUMBER: _ClassVar[int]
     LOT_SIZE_FIELD_NUMBER: _ClassVar[int]
     EXPIRATION_DATE_FIELD_NUMBER: _ClassVar[int]
+    QUOTE_CURRENCY_FIELD_NUMBER: _ClassVar[int]
     board: str
     id: str
     ticker: str
@@ -64,7 +69,8 @@ class GetAssetResponse(_message.Message):
     min_step: int
     lot_size: _decimal_pb2.Decimal
     expiration_date: _date_pb2.Date
-    def __init__(self, board: _Optional[str] = ..., id: _Optional[str] = ..., ticker: _Optional[str] = ..., mic: _Optional[str] = ..., isin: _Optional[str] = ..., type: _Optional[str] = ..., name: _Optional[str] = ..., decimals: _Optional[int] = ..., min_step: _Optional[int] = ..., lot_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., expiration_date: _Optional[_Union[_date_pb2.Date, _Mapping]] = ...) -> None: ...
+    quote_currency: str
+    def __init__(self, board: _Optional[str] = ..., id: _Optional[str] = ..., ticker: _Optional[str] = ..., mic: _Optional[str] = ..., isin: _Optional[str] = ..., type: _Optional[str] = ..., name: _Optional[str] = ..., decimals: _Optional[int] = ..., min_step: _Optional[int] = ..., lot_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., expiration_date: _Optional[_Union[_date_pb2.Date, _Mapping]] = ..., quote_currency: _Optional[str] = ...) -> None: ...
 
 class GetAssetParamsRequest(_message.Message):
     __slots__ = ("symbol", "account_id")
@@ -75,7 +81,7 @@ class GetAssetParamsRequest(_message.Message):
     def __init__(self, symbol: _Optional[str] = ..., account_id: _Optional[str] = ...) -> None: ...
 
 class GetAssetParamsResponse(_message.Message):
-    __slots__ = ("symbol", "account_id", "tradeable", "longable", "shortable", "long_risk_rate", "long_collateral", "short_risk_rate", "short_collateral", "long_initial_margin", "short_initial_margin")
+    __slots__ = ("symbol", "account_id", "tradeable", "longable", "shortable", "long_risk_rate", "long_collateral", "short_risk_rate", "short_collateral", "long_initial_margin", "short_initial_margin", "is_tradable")
     SYMBOL_FIELD_NUMBER: _ClassVar[int]
     ACCOUNT_ID_FIELD_NUMBER: _ClassVar[int]
     TRADEABLE_FIELD_NUMBER: _ClassVar[int]
@@ -87,6 +93,7 @@ class GetAssetParamsResponse(_message.Message):
     SHORT_COLLATERAL_FIELD_NUMBER: _ClassVar[int]
     LONG_INITIAL_MARGIN_FIELD_NUMBER: _ClassVar[int]
     SHORT_INITIAL_MARGIN_FIELD_NUMBER: _ClassVar[int]
+    IS_TRADABLE_FIELD_NUMBER: _ClassVar[int]
     symbol: str
     account_id: str
     tradeable: bool
@@ -98,13 +105,18 @@ class GetAssetParamsResponse(_message.Message):
     short_collateral: _money_pb2.Money
     long_initial_margin: _money_pb2.Money
     short_initial_margin: _money_pb2.Money
-    def __init__(self, symbol: _Optional[str] = ..., account_id: _Optional[str] = ..., tradeable: bool = ..., longable: _Optional[_Union[Longable, _Mapping]] = ..., shortable: _Optional[_Union[Shortable, _Mapping]] = ..., long_risk_rate: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., long_collateral: _Optional[_Union[_money_pb2.Money, _Mapping]] = ..., short_risk_rate: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., short_collateral: _Optional[_Union[_money_pb2.Money, _Mapping]] = ..., long_initial_margin: _Optional[_Union[_money_pb2.Money, _Mapping]] = ..., short_initial_margin: _Optional[_Union[_money_pb2.Money, _Mapping]] = ...) -> None: ...
+    is_tradable: _wrappers_pb2.BoolValue
+    def __init__(self, symbol: _Optional[str] = ..., account_id: _Optional[str] = ..., tradeable: bool = ..., longable: _Optional[_Union[Longable, _Mapping]] = ..., shortable: _Optional[_Union[Shortable, _Mapping]] = ..., long_risk_rate: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., long_collateral: _Optional[_Union[_money_pb2.Money, _Mapping]] = ..., short_risk_rate: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., short_collateral: _Optional[_Union[_money_pb2.Money, _Mapping]] = ..., long_initial_margin: _Optional[_Union[_money_pb2.Money, _Mapping]] = ..., short_initial_margin: _Optional[_Union[_money_pb2.Money, _Mapping]] = ..., is_tradable: _Optional[_Union[_wrappers_pb2.BoolValue, _Mapping]] = ...) -> None: ...
 
 class OptionsChainRequest(_message.Message):
-    __slots__ = ("underlying_symbol",)
+    __slots__ = ("underlying_symbol", "root", "expiration_date")
     UNDERLYING_SYMBOL_FIELD_NUMBER: _ClassVar[int]
+    ROOT_FIELD_NUMBER: _ClassVar[int]
+    EXPIRATION_DATE_FIELD_NUMBER: _ClassVar[int]
     underlying_symbol: str
-    def __init__(self, underlying_symbol: _Optional[str] = ...) -> None: ...
+    root: str
+    expiration_date: _date_pb2.Date
+    def __init__(self, underlying_symbol: _Optional[str] = ..., root: _Optional[str] = ..., expiration_date: _Optional[_Union[_date_pb2.Date, _Mapping]] = ...) -> None: ...
 
 class OptionsChainResponse(_message.Message):
     __slots__ = ("symbol", "options")
@@ -143,7 +155,7 @@ class ClockResponse(_message.Message):
     __slots__ = ("timestamp",)
     TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
     timestamp: _timestamp_pb2.Timestamp
-    def __init__(self, timestamp: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    def __init__(self, timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class Exchange(_message.Message):
     __slots__ = ("mic", "name")

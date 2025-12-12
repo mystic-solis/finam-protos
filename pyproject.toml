@@ -1,6 +1,6 @@
 [project]
 name = "finam-protos"
-version = "1.0.3"
+version = "1.0.4"
 description = "Finam gRPC API protos"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -28,7 +28,6 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-# where = ["finam_protos"]
 include = ["finam_protos*"]
 
 [tool.uv]

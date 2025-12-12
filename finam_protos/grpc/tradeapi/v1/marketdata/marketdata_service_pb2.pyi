@@ -1,3 +1,5 @@
+import datetime
+
 from google.api import annotations_pb2 as _annotations_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from google.type import decimal_pb2 as _decimal_pb2
@@ -7,7 +9,8 @@ from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
@@ -156,7 +159,7 @@ class Bar(_message.Message):
     low: _decimal_pb2.Decimal
     close: _decimal_pb2.Decimal
     volume: _decimal_pb2.Decimal
-    def __init__(self, timestamp: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ..., open: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., high: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., low: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., close: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., volume: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ...) -> None: ...
+    def __init__(self, timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., open: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., high: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., low: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., close: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., volume: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ...) -> None: ...
 
 class Quote(_message.Message):
     __slots__ = ("symbol", "timestamp", "ask", "ask_size", "bid", "bid_size", "last", "last_size", "volume", "turnover", "open", "high", "low", "close", "change", "option")
@@ -211,7 +214,7 @@ class Quote(_message.Message):
     close: _decimal_pb2.Decimal
     change: _decimal_pb2.Decimal
     option: Quote.Option
-    def __init__(self, symbol: _Optional[str] = ..., timestamp: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ..., ask: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., ask_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., bid: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., bid_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., last: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., last_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., volume: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., turnover: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., open: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., high: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., low: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., close: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., change: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., option: _Optional[_Union[Quote.Option, _Mapping]] = ...) -> None: ...
+    def __init__(self, symbol: _Optional[str] = ..., timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., ask: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., ask_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., bid: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., bid_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., last: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., last_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., volume: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., turnover: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., open: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., high: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., low: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., close: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., change: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., option: _Optional[_Union[Quote.Option, _Mapping]] = ...) -> None: ...
 
 class OrderBook(_message.Message):
     __slots__ = ("rows",)
@@ -239,7 +242,7 @@ class OrderBook(_message.Message):
         action: OrderBook.Row.Action
         mpid: str
         timestamp: _timestamp_pb2.Timestamp
-        def __init__(self, price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., sell_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., buy_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., action: _Optional[_Union[OrderBook.Row.Action, str]] = ..., mpid: _Optional[str] = ..., timestamp: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+        def __init__(self, price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., sell_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., buy_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., action: _Optional[_Union[OrderBook.Row.Action, str]] = ..., mpid: _Optional[str] = ..., timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
     ROWS_FIELD_NUMBER: _ClassVar[int]
     rows: _containers.RepeatedCompositeFieldContainer[OrderBook.Row]
     def __init__(self, rows: _Optional[_Iterable[_Union[OrderBook.Row, _Mapping]]] = ...) -> None: ...
@@ -258,7 +261,7 @@ class Trade(_message.Message):
     price: _decimal_pb2.Decimal
     size: _decimal_pb2.Decimal
     side: _side_pb2.Side
-    def __init__(self, trade_id: _Optional[str] = ..., mpid: _Optional[str] = ..., timestamp: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ..., price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., side: _Optional[_Union[_side_pb2.Side, str]] = ...) -> None: ...
+    def __init__(self, trade_id: _Optional[str] = ..., mpid: _Optional[str] = ..., timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., side: _Optional[_Union[_side_pb2.Side, str]] = ...) -> None: ...
 
 class StreamError(_message.Message):
     __slots__ = ("code", "description")
@@ -294,7 +297,7 @@ class StreamOrderBook(_message.Message):
         action: StreamOrderBook.Row.Action
         mpid: str
         timestamp: _timestamp_pb2.Timestamp
-        def __init__(self, price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., sell_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., buy_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., action: _Optional[_Union[StreamOrderBook.Row.Action, str]] = ..., mpid: _Optional[str] = ..., timestamp: _Optional[_Union[_timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+        def __init__(self, price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., sell_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., buy_size: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., action: _Optional[_Union[StreamOrderBook.Row.Action, str]] = ..., mpid: _Optional[str] = ..., timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
     SYMBOL_FIELD_NUMBER: _ClassVar[int]
     ROWS_FIELD_NUMBER: _ClassVar[int]
     symbol: str
