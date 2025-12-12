@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package finam_protos.grpc.tradeapi.v1.orders;
+package grpc.tradeapi.v1.orders;
 
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "google/type/decimal.proto";
-import "finam_protos/grpc/tradeapi/v1/side.proto";
-import "finam_protos/grpc/tradeapi/v1/trade.proto";
+import "grpc/tradeapi/v1/side.proto";
+import "grpc/tradeapi/v1/trade.proto";
 
 option go_package = "trade_api/v1/orders/orders_service";
 option java_multiple_files = true;
@@ -236,7 +236,7 @@ message Leg {
   // Количество
   google.type.Decimal quantity = 2;
   // Сторона
-  finam_protos.grpc.tradeapi.v1.Side side = 3;
+  grpc.tradeapi.v1.Side side = 3;
 }
 
 // Статус заявки

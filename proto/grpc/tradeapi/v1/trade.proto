@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package finam_protos.grpc.tradeapi.v1;
+package grpc.tradeapi.v1;
 
 import "google/protobuf/timestamp.proto";
 import "google/type/decimal.proto";
-import "finam_protos/grpc/tradeapi/v1/side.proto";
+import "grpc/tradeapi/v1/side.proto";
 
 option go_package = "trade_api/v1/trade";
 option java_multiple_files = true;

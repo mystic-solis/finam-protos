@@ -1,14 +1,14 @@
 syntax = "proto3";
 
-package finam_protos.grpc.tradeapi.v1.accounts;
+package grpc.tradeapi.v1.accounts;
 
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "google/type/decimal.proto";
 import "google/type/interval.proto";
 import "google/type/money.proto";
-import "finam_protos/grpc/tradeapi/v1/side.proto";
-import "finam_protos/grpc/tradeapi/v1/trade.proto";
+import "grpc/tradeapi/v1/side.proto";
+import "grpc/tradeapi/v1/trade.proto";
 
 option go_package = "trade_api/v1/accounts/accounts_service";
 option java_multiple_files = true;

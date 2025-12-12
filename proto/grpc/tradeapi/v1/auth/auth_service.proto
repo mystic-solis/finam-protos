@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package finam_protos.grpc.tradeapi.v1.auth;
+package grpc.tradeapi.v1.auth;
 
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";

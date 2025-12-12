@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package finam_protos.grpc.tradeapi.v1;
+package grpc.tradeapi.v1;
 
 option go_package = "trade_api/v1/side";
 option java_multiple_files = true;

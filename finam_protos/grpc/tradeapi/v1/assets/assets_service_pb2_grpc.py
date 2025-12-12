@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from finam_protos.grpc.tradeapi.v1.assets import assets_service_pb2 as finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2
+from finam_protos.grpc.tradeapi.v1.assets import assets_service_pb2 as grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2
 
 GRPC_GENERATED_VERSION = '1.76.0'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + ' but the generated code in finam_protos/grpc/tradeapi/v1/assets/assets_service_pb2_grpc.py depends on'
+        + ' but the generated code in grpc/tradeapi/v1/assets/assets_service_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,39 +36,39 @@ class AssetsServiceStub(object):
             channel: A grpc.Channel.
         """
         self.Exchanges = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/Exchanges',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ExchangesRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ExchangesResponse.FromString,
+                '/grpc.tradeapi.v1.assets.AssetsService/Exchanges',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ExchangesRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ExchangesResponse.FromString,
                 _registered_method=True)
         self.Assets = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/Assets',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.AssetsRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.AssetsResponse.FromString,
+                '/grpc.tradeapi.v1.assets.AssetsService/Assets',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.AssetsRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.AssetsResponse.FromString,
                 _registered_method=True)
         self.GetAsset = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/GetAsset',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetResponse.FromString,
+                '/grpc.tradeapi.v1.assets.AssetsService/GetAsset',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetResponse.FromString,
                 _registered_method=True)
         self.GetAssetParams = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/GetAssetParams',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetParamsRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetParamsResponse.FromString,
+                '/grpc.tradeapi.v1.assets.AssetsService/GetAssetParams',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetParamsRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetParamsResponse.FromString,
                 _registered_method=True)
         self.OptionsChain = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/OptionsChain',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.OptionsChainRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.OptionsChainResponse.FromString,
+                '/grpc.tradeapi.v1.assets.AssetsService/OptionsChain',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.OptionsChainRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.OptionsChainResponse.FromString,
                 _registered_method=True)
         self.Schedule = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/Schedule',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ScheduleRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ScheduleResponse.FromString,
+                '/grpc.tradeapi.v1.assets.AssetsService/Schedule',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ScheduleRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ScheduleResponse.FromString,
                 _registered_method=True)
         self.Clock = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/Clock',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ClockRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ClockResponse.FromString,
+                '/grpc.tradeapi.v1.assets.AssetsService/Clock',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ClockRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ClockResponse.FromString,
                 _registered_method=True)
 
 
@@ -159,44 +159,44 @@ def add_AssetsServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Exchanges': grpc.unary_unary_rpc_method_handler(
                     servicer.Exchanges,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ExchangesRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ExchangesResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ExchangesRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ExchangesResponse.SerializeToString,
             ),
             'Assets': grpc.unary_unary_rpc_method_handler(
                     servicer.Assets,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.AssetsRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.AssetsResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.AssetsRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.AssetsResponse.SerializeToString,
             ),
             'GetAsset': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAsset,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetResponse.SerializeToString,
             ),
             'GetAssetParams': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAssetParams,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetParamsRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetParamsResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetParamsRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetParamsResponse.SerializeToString,
             ),
             'OptionsChain': grpc.unary_unary_rpc_method_handler(
                     servicer.OptionsChain,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.OptionsChainRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.OptionsChainResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.OptionsChainRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.OptionsChainResponse.SerializeToString,
             ),
             'Schedule': grpc.unary_unary_rpc_method_handler(
                     servicer.Schedule,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ScheduleRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ScheduleResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ScheduleRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ScheduleResponse.SerializeToString,
             ),
             'Clock': grpc.unary_unary_rpc_method_handler(
                     servicer.Clock,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ClockRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ClockResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ClockRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ClockResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'finam_protos.grpc.tradeapi.v1.assets.AssetsService', rpc_method_handlers)
+            'grpc.tradeapi.v1.assets.AssetsService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('finam_protos.grpc.tradeapi.v1.assets.AssetsService', rpc_method_handlers)
+    server.add_registered_method_handlers('grpc.tradeapi.v1.assets.AssetsService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -218,9 +218,9 @@ class AssetsService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/Exchanges',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ExchangesRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ExchangesResponse.FromString,
+            '/grpc.tradeapi.v1.assets.AssetsService/Exchanges',
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ExchangesRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ExchangesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -245,9 +245,9 @@ class AssetsService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/Assets',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.AssetsRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.AssetsResponse.FromString,
+            '/grpc.tradeapi.v1.assets.AssetsService/Assets',
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.AssetsRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.AssetsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -272,9 +272,9 @@ class AssetsService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/GetAsset',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetResponse.FromString,
+            '/grpc.tradeapi.v1.assets.AssetsService/GetAsset',
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -299,9 +299,9 @@ class AssetsService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/GetAssetParams',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetParamsRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetParamsResponse.FromString,
+            '/grpc.tradeapi.v1.assets.AssetsService/GetAssetParams',
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetParamsRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.GetAssetParamsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -326,9 +326,9 @@ class AssetsService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/OptionsChain',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.OptionsChainRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.OptionsChainResponse.FromString,
+            '/grpc.tradeapi.v1.assets.AssetsService/OptionsChain',
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.OptionsChainRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.OptionsChainResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -353,9 +353,9 @@ class AssetsService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/Schedule',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ScheduleRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ScheduleResponse.FromString,
+            '/grpc.tradeapi.v1.assets.AssetsService/Schedule',
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ScheduleRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ScheduleResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -380,9 +380,9 @@ class AssetsService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.assets.AssetsService/Clock',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ClockRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ClockResponse.FromString,
+            '/grpc.tradeapi.v1.assets.AssetsService/Clock',
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ClockRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_assets_dot_assets__service__pb2.ClockResponse.FromString,
             options,
             channel_credentials,
             insecure,

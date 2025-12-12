@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from finam_protos.grpc.tradeapi.v1.auth import auth_service_pb2 as finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2
+from finam_protos.grpc.tradeapi.v1.auth import auth_service_pb2 as grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2
 
 GRPC_GENERATED_VERSION = '1.76.0'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + ' but the generated code in finam_protos/grpc/tradeapi/v1/auth/auth_service_pb2_grpc.py depends on'
+        + ' but the generated code in grpc/tradeapi/v1/auth/auth_service_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,19 +36,19 @@ class AuthServiceStub(object):
             channel: A grpc.Channel.
         """
         self.Auth = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.auth.AuthService/Auth',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.AuthRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.AuthResponse.FromString,
+                '/grpc.tradeapi.v1.auth.AuthService/Auth',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.AuthRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.AuthResponse.FromString,
                 _registered_method=True)
         self.TokenDetails = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.auth.AuthService/TokenDetails',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.TokenDetailsRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.TokenDetailsResponse.FromString,
+                '/grpc.tradeapi.v1.auth.AuthService/TokenDetails',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.TokenDetailsRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.TokenDetailsResponse.FromString,
                 _registered_method=True)
         self.SubscribeJwtRenewal = channel.unary_stream(
-                '/finam_protos.grpc.tradeapi.v1.auth.AuthService/SubscribeJwtRenewal',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.SubscribeJwtRenewalRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.SubscribeJwtRenewalResponse.FromString,
+                '/grpc.tradeapi.v1.auth.AuthService/SubscribeJwtRenewal',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.SubscribeJwtRenewalRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.SubscribeJwtRenewalResponse.FromString,
                 _registered_method=True)
 
 
@@ -101,24 +101,24 @@ def add_AuthServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Auth': grpc.unary_unary_rpc_method_handler(
                     servicer.Auth,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.AuthRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.AuthResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.AuthRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.AuthResponse.SerializeToString,
             ),
             'TokenDetails': grpc.unary_unary_rpc_method_handler(
                     servicer.TokenDetails,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.TokenDetailsRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.TokenDetailsResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.TokenDetailsRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.TokenDetailsResponse.SerializeToString,
             ),
             'SubscribeJwtRenewal': grpc.unary_stream_rpc_method_handler(
                     servicer.SubscribeJwtRenewal,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.SubscribeJwtRenewalRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.SubscribeJwtRenewalResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.SubscribeJwtRenewalRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.SubscribeJwtRenewalResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'finam_protos.grpc.tradeapi.v1.auth.AuthService', rpc_method_handlers)
+            'grpc.tradeapi.v1.auth.AuthService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('finam_protos.grpc.tradeapi.v1.auth.AuthService', rpc_method_handlers)
+    server.add_registered_method_handlers('grpc.tradeapi.v1.auth.AuthService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -140,9 +140,9 @@ class AuthService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.auth.AuthService/Auth',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.AuthRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.AuthResponse.FromString,
+            '/grpc.tradeapi.v1.auth.AuthService/Auth',
+            grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.AuthRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.AuthResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -167,9 +167,9 @@ class AuthService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.auth.AuthService/TokenDetails',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.TokenDetailsRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.TokenDetailsResponse.FromString,
+            '/grpc.tradeapi.v1.auth.AuthService/TokenDetails',
+            grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.TokenDetailsRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.TokenDetailsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -194,9 +194,9 @@ class AuthService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.auth.AuthService/SubscribeJwtRenewal',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.SubscribeJwtRenewalRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.SubscribeJwtRenewalResponse.FromString,
+            '/grpc.tradeapi.v1.auth.AuthService/SubscribeJwtRenewal',
+            grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.SubscribeJwtRenewalRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2.SubscribeJwtRenewalResponse.FromString,
             options,
             channel_credentials,
             insecure,

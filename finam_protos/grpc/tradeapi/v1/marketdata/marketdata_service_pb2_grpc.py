@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from finam_protos.grpc.tradeapi.v1.marketdata import marketdata_service_pb2 as finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2
+from finam_protos.grpc.tradeapi.v1.marketdata import marketdata_service_pb2 as grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2
 
 GRPC_GENERATED_VERSION = '1.76.0'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + ' but the generated code in finam_protos/grpc/tradeapi/v1/marketdata/marketdata_service_pb2_grpc.py depends on'
+        + ' but the generated code in grpc/tradeapi/v1/marketdata/marketdata_service_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,44 +36,44 @@ class MarketDataServiceStub(object):
             channel: A grpc.Channel.
         """
         self.Bars = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/Bars',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.BarsRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.BarsResponse.FromString,
+                '/grpc.tradeapi.v1.marketdata.MarketDataService/Bars',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.BarsRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.BarsResponse.FromString,
                 _registered_method=True)
         self.LastQuote = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/LastQuote',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.QuoteRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.QuoteResponse.FromString,
+                '/grpc.tradeapi.v1.marketdata.MarketDataService/LastQuote',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.QuoteRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.QuoteResponse.FromString,
                 _registered_method=True)
         self.OrderBook = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/OrderBook',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.OrderBookRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.OrderBookResponse.FromString,
+                '/grpc.tradeapi.v1.marketdata.MarketDataService/OrderBook',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.OrderBookRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.OrderBookResponse.FromString,
                 _registered_method=True)
         self.LatestTrades = channel.unary_unary(
-                '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/LatestTrades',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.LatestTradesRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.LatestTradesResponse.FromString,
+                '/grpc.tradeapi.v1.marketdata.MarketDataService/LatestTrades',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.LatestTradesRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.LatestTradesResponse.FromString,
                 _registered_method=True)
         self.SubscribeQuote = channel.unary_stream(
-                '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeQuote',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeQuoteRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeQuoteResponse.FromString,
+                '/grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeQuote',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeQuoteRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeQuoteResponse.FromString,
                 _registered_method=True)
         self.SubscribeOrderBook = channel.unary_stream(
-                '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeOrderBook',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeOrderBookRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeOrderBookResponse.FromString,
+                '/grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeOrderBook',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeOrderBookRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeOrderBookResponse.FromString,
                 _registered_method=True)
         self.SubscribeLatestTrades = channel.unary_stream(
-                '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeLatestTrades',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeLatestTradesRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeLatestTradesResponse.FromString,
+                '/grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeLatestTrades',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeLatestTradesRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeLatestTradesResponse.FromString,
                 _registered_method=True)
         self.SubscribeBars = channel.unary_stream(
-                '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeBars',
-                request_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeBarsRequest.SerializeToString,
-                response_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeBarsResponse.FromString,
+                '/grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeBars',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeBarsRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeBarsResponse.FromString,
                 _registered_method=True)
 
 
@@ -158,49 +158,49 @@ def add_MarketDataServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Bars': grpc.unary_unary_rpc_method_handler(
                     servicer.Bars,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.BarsRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.BarsResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.BarsRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.BarsResponse.SerializeToString,
             ),
             'LastQuote': grpc.unary_unary_rpc_method_handler(
                     servicer.LastQuote,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.QuoteRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.QuoteResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.QuoteRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.QuoteResponse.SerializeToString,
             ),
             'OrderBook': grpc.unary_unary_rpc_method_handler(
                     servicer.OrderBook,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.OrderBookRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.OrderBookResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.OrderBookRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.OrderBookResponse.SerializeToString,
             ),
             'LatestTrades': grpc.unary_unary_rpc_method_handler(
                     servicer.LatestTrades,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.LatestTradesRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.LatestTradesResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.LatestTradesRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.LatestTradesResponse.SerializeToString,
             ),
             'SubscribeQuote': grpc.unary_stream_rpc_method_handler(
                     servicer.SubscribeQuote,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeQuoteRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeQuoteResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeQuoteRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeQuoteResponse.SerializeToString,
             ),
             'SubscribeOrderBook': grpc.unary_stream_rpc_method_handler(
                     servicer.SubscribeOrderBook,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeOrderBookRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeOrderBookResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeOrderBookRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeOrderBookResponse.SerializeToString,
             ),
             'SubscribeLatestTrades': grpc.unary_stream_rpc_method_handler(
                     servicer.SubscribeLatestTrades,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeLatestTradesRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeLatestTradesResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeLatestTradesRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeLatestTradesResponse.SerializeToString,
             ),
             'SubscribeBars': grpc.unary_stream_rpc_method_handler(
                     servicer.SubscribeBars,
-                    request_deserializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeBarsRequest.FromString,
-                    response_serializer=finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeBarsResponse.SerializeToString,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeBarsRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeBarsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService', rpc_method_handlers)
+            'grpc.tradeapi.v1.marketdata.MarketDataService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService', rpc_method_handlers)
+    server.add_registered_method_handlers('grpc.tradeapi.v1.marketdata.MarketDataService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -222,9 +222,9 @@ class MarketDataService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/Bars',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.BarsRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.BarsResponse.FromString,
+            '/grpc.tradeapi.v1.marketdata.MarketDataService/Bars',
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.BarsRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.BarsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -249,9 +249,9 @@ class MarketDataService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/LastQuote',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.QuoteRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.QuoteResponse.FromString,
+            '/grpc.tradeapi.v1.marketdata.MarketDataService/LastQuote',
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.QuoteRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.QuoteResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -276,9 +276,9 @@ class MarketDataService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/OrderBook',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.OrderBookRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.OrderBookResponse.FromString,
+            '/grpc.tradeapi.v1.marketdata.MarketDataService/OrderBook',
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.OrderBookRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.OrderBookResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -303,9 +303,9 @@ class MarketDataService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/LatestTrades',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.LatestTradesRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.LatestTradesResponse.FromString,
+            '/grpc.tradeapi.v1.marketdata.MarketDataService/LatestTrades',
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.LatestTradesRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.LatestTradesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -330,9 +330,9 @@ class MarketDataService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeQuote',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeQuoteRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeQuoteResponse.FromString,
+            '/grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeQuote',
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeQuoteRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeQuoteResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -357,9 +357,9 @@ class MarketDataService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeOrderBook',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeOrderBookRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeOrderBookResponse.FromString,
+            '/grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeOrderBook',
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeOrderBookRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeOrderBookResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -384,9 +384,9 @@ class MarketDataService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeLatestTrades',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeLatestTradesRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeLatestTradesResponse.FromString,
+            '/grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeLatestTrades',
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeLatestTradesRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeLatestTradesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -411,9 +411,9 @@ class MarketDataService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            '/finam_protos.grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeBars',
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeBarsRequest.SerializeToString,
-            finam__protos_dot_grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeBarsResponse.FromString,
+            '/grpc.tradeapi.v1.marketdata.MarketDataService/SubscribeBars',
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeBarsRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_marketdata_dot_marketdata__service__pb2.SubscribeBarsResponse.FromString,
             options,
             channel_credentials,
             insecure,
