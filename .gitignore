@@ -2,3 +2,4 @@
 /finam.egg-info
 *.egg-info
 dist
+proto_third_party/
