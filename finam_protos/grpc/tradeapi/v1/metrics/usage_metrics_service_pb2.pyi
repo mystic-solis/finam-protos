@@ -2,6 +2,7 @@ import datetime
 
 from google.api import annotations_pb2 as _annotations_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
+from grpc.gateway.protoc_gen_openapiv2.options import annotations_pb2 as _annotations_pb2_1
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message

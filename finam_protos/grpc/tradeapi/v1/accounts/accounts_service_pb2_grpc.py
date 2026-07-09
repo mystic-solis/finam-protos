@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from finam_protos.grpc.tradeapi.v1.accounts import accounts_service_pb2 as grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2
+from grpc.tradeapi.v1.accounts import accounts_service_pb2 as grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2
 
 GRPC_GENERATED_VERSION = '1.76.0'
 GRPC_VERSION = grpc.__version__
@@ -50,6 +50,11 @@ class AccountsServiceStub(object):
                 request_serializer=grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2.TransactionsRequest.SerializeToString,
                 response_deserializer=grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2.TransactionsResponse.FromString,
                 _registered_method=True)
+        self.SubscribeAccount = channel.unary_stream(
+                '/grpc.tradeapi.v1.accounts.AccountsService/SubscribeAccount',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2.GetAccountRequest.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2.GetAccountResponse.FromString,
+                _registered_method=True)
 
 
 class AccountsServiceServicer(object):
@@ -94,6 +99,13 @@ class AccountsServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SubscribeAccount(self, request, context):
+        """Подписка на информацию по аккаунту. Стрим метод
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_AccountsServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -111,6 +123,11 @@ def add_AccountsServiceServicer_to_server(servicer, server):
                     servicer.Transactions,
                     request_deserializer=grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2.TransactionsRequest.FromString,
                     response_serializer=grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2.TransactionsResponse.SerializeToString,
+            ),
+            'SubscribeAccount': grpc.unary_stream_rpc_method_handler(
+                    servicer.SubscribeAccount,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2.GetAccountRequest.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2.GetAccountResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -195,6 +212,33 @@ class AccountsService(object):
             '/grpc.tradeapi.v1.accounts.AccountsService/Transactions',
             grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2.TransactionsRequest.SerializeToString,
             grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2.TransactionsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SubscribeAccount(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(
+            request,
+            target,
+            '/grpc.tradeapi.v1.accounts.AccountsService/SubscribeAccount',
+            grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2.GetAccountRequest.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_accounts_dot_accounts__service__pb2.GetAccountResponse.FromString,
             options,
             channel_credentials,
             insecure,

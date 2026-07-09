@@ -5,8 +5,9 @@ from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from google.type import decimal_pb2 as _decimal_pb2
 from google.type import interval_pb2 as _interval_pb2
 from google.type import money_pb2 as _money_pb2
-from finam_protos.grpc.tradeapi.v1 import side_pb2 as _side_pb2
-from finam_protos.grpc.tradeapi.v1 import trade_pb2 as _trade_pb2
+from grpc.tradeapi.v1 import side_pb2 as _side_pb2
+from grpc.tradeapi.v1 import trade_pb2 as _trade_pb2
+from grpc.gateway.protoc_gen_openapiv2.options import annotations_pb2 as _annotations_pb2_1
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor

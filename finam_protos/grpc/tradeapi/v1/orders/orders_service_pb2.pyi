@@ -3,8 +3,9 @@ import datetime
 from google.api import annotations_pb2 as _annotations_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from google.type import decimal_pb2 as _decimal_pb2
-from finam_protos.grpc.tradeapi.v1 import side_pb2 as _side_pb2
-from finam_protos.grpc.tradeapi.v1 import trade_pb2 as _trade_pb2
+from grpc.tradeapi.v1 import side_pb2 as _side_pb2
+from grpc.tradeapi.v1 import trade_pb2 as _trade_pb2
+from grpc.gateway.protoc_gen_openapiv2.options import annotations_pb2 as _annotations_pb2_1
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
@@ -79,6 +80,12 @@ class ValidBefore(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     VALID_BEFORE_END_OF_DAY: _ClassVar[ValidBefore]
     VALID_BEFORE_GOOD_TILL_CANCEL: _ClassVar[ValidBefore]
     VALID_BEFORE_GOOD_TILL_DATE: _ClassVar[ValidBefore]
+
+class TPSpreadMeasure(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    TP_SPREAD_MEASURE_UNDEFINED: _ClassVar[TPSpreadMeasure]
+    TP_SPREAD_MEASURE_VALUE: _ClassVar[TPSpreadMeasure]
+    TP_SPREAD_MEASURE_PERCENT: _ClassVar[TPSpreadMeasure]
 ORDER_TYPE_UNSPECIFIED: OrderType
 ORDER_TYPE_MARKET: OrderType
 ORDER_TYPE_LIMIT: OrderType
@@ -130,6 +137,9 @@ VALID_BEFORE_UNSPECIFIED: ValidBefore
 VALID_BEFORE_END_OF_DAY: ValidBefore
 VALID_BEFORE_GOOD_TILL_CANCEL: ValidBefore
 VALID_BEFORE_GOOD_TILL_DATE: ValidBefore
+TP_SPREAD_MEASURE_UNDEFINED: TPSpreadMeasure
+TP_SPREAD_MEASURE_VALUE: TPSpreadMeasure
+TP_SPREAD_MEASURE_PERCENT: TPSpreadMeasure
 
 class OrderTradeRequest(_message.Message):
     __slots__ = ("action", "data_type", "account_id")
@@ -236,7 +246,7 @@ class Leg(_message.Message):
     def __init__(self, symbol: _Optional[str] = ..., quantity: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., side: _Optional[_Union[_side_pb2.Side, str]] = ...) -> None: ...
 
 class OrderState(_message.Message):
-    __slots__ = ("order_id", "exec_id", "status", "order", "transact_at", "accept_at", "withdraw_at")
+    __slots__ = ("order_id", "exec_id", "status", "order", "transact_at", "accept_at", "withdraw_at", "initial_quantity", "executed_quantity", "remaining_quantity", "sltp_order", "triggered_order_id")
     ORDER_ID_FIELD_NUMBER: _ClassVar[int]
     EXEC_ID_FIELD_NUMBER: _ClassVar[int]
     STATUS_FIELD_NUMBER: _ClassVar[int]
@@ -244,6 +254,11 @@ class OrderState(_message.Message):
     TRANSACT_AT_FIELD_NUMBER: _ClassVar[int]
     ACCEPT_AT_FIELD_NUMBER: _ClassVar[int]
     WITHDRAW_AT_FIELD_NUMBER: _ClassVar[int]
+    INITIAL_QUANTITY_FIELD_NUMBER: _ClassVar[int]
+    EXECUTED_QUANTITY_FIELD_NUMBER: _ClassVar[int]
+    REMAINING_QUANTITY_FIELD_NUMBER: _ClassVar[int]
+    SLTP_ORDER_FIELD_NUMBER: _ClassVar[int]
+    TRIGGERED_ORDER_ID_FIELD_NUMBER: _ClassVar[int]
     order_id: str
     exec_id: str
     status: OrderStatus
@@ -251,7 +266,12 @@ class OrderState(_message.Message):
     transact_at: _timestamp_pb2.Timestamp
     accept_at: _timestamp_pb2.Timestamp
     withdraw_at: _timestamp_pb2.Timestamp
-    def __init__(self, order_id: _Optional[str] = ..., exec_id: _Optional[str] = ..., status: _Optional[_Union[OrderStatus, str]] = ..., order: _Optional[_Union[Order, _Mapping]] = ..., transact_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., accept_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., withdraw_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    initial_quantity: _decimal_pb2.Decimal
+    executed_quantity: _decimal_pb2.Decimal
+    remaining_quantity: _decimal_pb2.Decimal
+    sltp_order: SLTPOrder
+    triggered_order_id: str
+    def __init__(self, order_id: _Optional[str] = ..., exec_id: _Optional[str] = ..., status: _Optional[_Union[OrderStatus, str]] = ..., order: _Optional[_Union[Order, _Mapping]] = ..., transact_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., accept_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., withdraw_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., initial_quantity: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., executed_quantity: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., remaining_quantity: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., sltp_order: _Optional[_Union[SLTPOrder, _Mapping]] = ..., triggered_order_id: _Optional[str] = ...) -> None: ...
 
 class OrdersRequest(_message.Message):
     __slots__ = ("account_id",)
@@ -272,3 +292,35 @@ class CancelOrderRequest(_message.Message):
     account_id: str
     order_id: str
     def __init__(self, account_id: _Optional[str] = ..., order_id: _Optional[str] = ...) -> None: ...
+
+class SLTPOrder(_message.Message):
+    __slots__ = ("account_id", "symbol", "side", "quantity_sl", "sl_price", "limit_price", "quantity_tp", "tp_price", "tp_guard_spread", "tp_spread_measure", "client_order_id", "valid_before", "valid_expiry_time", "comment")
+    ACCOUNT_ID_FIELD_NUMBER: _ClassVar[int]
+    SYMBOL_FIELD_NUMBER: _ClassVar[int]
+    SIDE_FIELD_NUMBER: _ClassVar[int]
+    QUANTITY_SL_FIELD_NUMBER: _ClassVar[int]
+    SL_PRICE_FIELD_NUMBER: _ClassVar[int]
+    LIMIT_PRICE_FIELD_NUMBER: _ClassVar[int]
+    QUANTITY_TP_FIELD_NUMBER: _ClassVar[int]
+    TP_PRICE_FIELD_NUMBER: _ClassVar[int]
+    TP_GUARD_SPREAD_FIELD_NUMBER: _ClassVar[int]
+    TP_SPREAD_MEASURE_FIELD_NUMBER: _ClassVar[int]
+    CLIENT_ORDER_ID_FIELD_NUMBER: _ClassVar[int]
+    VALID_BEFORE_FIELD_NUMBER: _ClassVar[int]
+    VALID_EXPIRY_TIME_FIELD_NUMBER: _ClassVar[int]
+    COMMENT_FIELD_NUMBER: _ClassVar[int]
+    account_id: str
+    symbol: str
+    side: _side_pb2.Side
+    quantity_sl: _decimal_pb2.Decimal
+    sl_price: _decimal_pb2.Decimal
+    limit_price: _decimal_pb2.Decimal
+    quantity_tp: _decimal_pb2.Decimal
+    tp_price: _decimal_pb2.Decimal
+    tp_guard_spread: _decimal_pb2.Decimal
+    tp_spread_measure: TPSpreadMeasure
+    client_order_id: str
+    valid_before: ValidBefore
+    valid_expiry_time: _timestamp_pb2.Timestamp
+    comment: str
+    def __init__(self, account_id: _Optional[str] = ..., symbol: _Optional[str] = ..., side: _Optional[_Union[_side_pb2.Side, str]] = ..., quantity_sl: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., sl_price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., limit_price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., quantity_tp: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., tp_price: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., tp_guard_spread: _Optional[_Union[_decimal_pb2.Decimal, _Mapping]] = ..., tp_spread_measure: _Optional[_Union[TPSpreadMeasure, str]] = ..., client_order_id: _Optional[str] = ..., valid_before: _Optional[_Union[ValidBefore, str]] = ..., valid_expiry_time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., comment: _Optional[str] = ...) -> None: ...

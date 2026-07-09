@@ -6,7 +6,7 @@ import "google/protobuf/timestamp.proto";
 import "google/type/decimal.proto";
 import "grpc/tradeapi/v1/side.proto";
 
-option go_package = "trade_api/v1/trade";
+option go_package = "github.com/FinamWeb/finam-trade-api/go/grpc/tradeapi/v1";
 option java_multiple_files = true;
 
 // Информация о сделке
@@ -29,4 +29,11 @@ message AccountTrade {
   string account_id = 8;
   // Метка заявки. (максимум 128 символов)
   string comment = 9;
+  // НКД (заполняется на следующий день после даты совершения сделки)
+  google.type.Decimal accrued_interest = 10;
+  // Валюта цены (например, RUB, USD, EUR)
+  // Примечание: поле заполняется только при использовании метода Trades
+  // Для SubscribeTrades данное поле может быть пустым в связи с различиями в источниках данных. При обработке сделок из подписки рекомендуется учитывать возможность пустого значения.
+  string currency = 11;
 }
+

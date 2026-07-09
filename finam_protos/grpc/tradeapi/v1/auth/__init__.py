@@ -1,2 +1,0 @@
-from .auth_service_pb2 import *
-from .auth_service_pb2_grpc import *

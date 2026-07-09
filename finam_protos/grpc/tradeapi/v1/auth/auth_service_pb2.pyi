@@ -2,6 +2,7 @@ import datetime
 
 from google.api import annotations_pb2 as _annotations_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
+from grpc.gateway.protoc_gen_openapiv2.options import annotations_pb2 as _annotations_pb2_1
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
@@ -12,10 +13,12 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class AuthRequest(_message.Message):
-    __slots__ = ("secret",)
+    __slots__ = ("secret", "source_app_id")
     SECRET_FIELD_NUMBER: _ClassVar[int]
+    SOURCE_APP_ID_FIELD_NUMBER: _ClassVar[int]
     secret: str
-    def __init__(self, secret: _Optional[str] = ...) -> None: ...
+    source_app_id: str
+    def __init__(self, secret: _Optional[str] = ..., source_app_id: _Optional[str] = ...) -> None: ...
 
 class AuthResponse(_message.Message):
     __slots__ = ("token",)
@@ -74,10 +77,12 @@ class MDPermission(_message.Message):
     def __init__(self, quote_level: _Optional[_Union[MDPermission.QuoteLevel, str]] = ..., delay_minutes: _Optional[int] = ..., mic: _Optional[str] = ..., country: _Optional[str] = ..., continent: _Optional[str] = ..., worldwide: bool = ...) -> None: ...
 
 class SubscribeJwtRenewalRequest(_message.Message):
-    __slots__ = ("secret",)
+    __slots__ = ("secret", "source_app_id")
     SECRET_FIELD_NUMBER: _ClassVar[int]
+    SOURCE_APP_ID_FIELD_NUMBER: _ClassVar[int]
     secret: str
-    def __init__(self, secret: _Optional[str] = ...) -> None: ...
+    source_app_id: str
+    def __init__(self, secret: _Optional[str] = ..., source_app_id: _Optional[str] = ...) -> None: ...
 
 class SubscribeJwtRenewalResponse(_message.Message):
     __slots__ = ("token",)

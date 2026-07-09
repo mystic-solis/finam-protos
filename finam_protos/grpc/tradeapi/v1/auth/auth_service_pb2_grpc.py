@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from finam_protos.grpc.tradeapi.v1.auth import auth_service_pb2 as grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2
+from grpc.tradeapi.v1.auth import auth_service_pb2 as grpc_dot_tradeapi_dot_v1_dot_auth_dot_auth__service__pb2
 
 GRPC_GENERATED_VERSION = '1.76.0'
 GRPC_VERSION = grpc.__version__

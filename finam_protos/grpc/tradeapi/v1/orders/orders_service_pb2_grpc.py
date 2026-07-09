@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from finam_protos.grpc.tradeapi.v1.orders import orders_service_pb2 as grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2
+from grpc.tradeapi.v1.orders import orders_service_pb2 as grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2
 
 GRPC_GENERATED_VERSION = '1.76.0'
 GRPC_VERSION = grpc.__version__
@@ -70,6 +70,11 @@ class OrdersServiceStub(object):
                 request_serializer=grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2.SubscribeTradesRequest.SerializeToString,
                 response_deserializer=grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2.SubscribeTradesResponse.FromString,
                 _registered_method=True)
+        self.PlaceSLTPOrder = channel.unary_unary(
+                '/grpc.tradeapi.v1.orders.OrdersService/PlaceSLTPOrder',
+                request_serializer=grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2.SLTPOrder.SerializeToString,
+                response_deserializer=grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2.OrderState.FromString,
+                _registered_method=True)
 
 
 class OrdersServiceServicer(object):
@@ -86,14 +91,14 @@ class OrdersServiceServicer(object):
         {
         "symbol": "SBER@MISX",
         "quantity": {
-        			 "value": "10"
-        		 },
+        		 "value": "10"
+        	 },
         "side": "SIDE_BUY",
         "type": "ORDER_TYPE_LIMIT",
         "time_in_force": "TIME_IN_FORCE_DAY",
         "limit_price": {
-        			 "value": "150.50"
-        		 }
+        		 "value": "150.50"
+        	 }
         }
 
         Поле account_id берется из URL-пути, остальные поля передаются в теле запроса
@@ -153,6 +158,45 @@ class OrdersServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def PlaceSLTPOrder(self, request, context):
+        """Выставление SL/TP заявки
+        Пример HTTP запроса:
+        POST /v1/accounts/A12345/sltp-orders
+        Content-Type: application/json
+        Authorization: <token>
+
+        {
+        "symbol": "SBER@MISX",
+        "side": "SIDE_BUY",
+        "quantity_sl": {
+        "value": "10"
+        },
+        "sl_price": {
+        "value": "270.00"
+        },
+        "limit_price": {
+        "value": "269.50"
+        },
+        "quantity_tp": {
+        "value": "10"
+        },
+        "tp_price": {
+        "value": "295.50"
+        },
+        "tp_guard_spread": {
+        "value": "0.5"  },
+        "tp_spread_measure": "TP_SPREAD_MEASURE_VALUE",
+        "valid_before": "VALID_BEFORE_GOOD_TILL_DATE",
+        "valid_expiry_time": "2026-12-31T23:59:59Z",
+        "comment": "my SL/TP order"
+        }
+
+        Поле account_id берется из URL-пути, остальные поля передаются в теле запроса
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_OrdersServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -190,6 +234,11 @@ def add_OrdersServiceServicer_to_server(servicer, server):
                     servicer.SubscribeTrades,
                     request_deserializer=grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2.SubscribeTradesRequest.FromString,
                     response_serializer=grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2.SubscribeTradesResponse.SerializeToString,
+            ),
+            'PlaceSLTPOrder': grpc.unary_unary_rpc_method_handler(
+                    servicer.PlaceSLTPOrder,
+                    request_deserializer=grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2.SLTPOrder.FromString,
+                    response_serializer=grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2.OrderState.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -382,6 +431,33 @@ class OrdersService(object):
             '/grpc.tradeapi.v1.orders.OrdersService/SubscribeTrades',
             grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2.SubscribeTradesRequest.SerializeToString,
             grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2.SubscribeTradesResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def PlaceSLTPOrder(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/grpc.tradeapi.v1.orders.OrdersService/PlaceSLTPOrder',
+            grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2.SLTPOrder.SerializeToString,
+            grpc_dot_tradeapi_dot_v1_dot_orders_dot_orders__service__pb2.OrderState.FromString,
             options,
             channel_credentials,
             insecure,

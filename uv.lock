@@ -4,8 +4,8 @@ requires-python = ">=3.12"
 
 [[package]]
 name = "finam-protos"
-version = "1.0.4"
-source = { virtual = "." }
+version = "1.0.5"
+source = { editable = "." }
 dependencies = [
     { name = "googleapis-common-protos" },
     { name = "grpcio" },
@@ -18,7 +18,7 @@ dependencies = [
 requires-dist = [
     { name = "googleapis-common-protos" },
     { name = "grpcio" },
-    { name = "grpcio-tools", specifier = ">=1.76.0" },
+    { name = "grpcio-tools" },
     { name = "protobuf" },
     { name = "types-protobuf" },
 ]
